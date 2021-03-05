@@ -1,0 +1,262 @@
+.container {
+    color: white;
+    background-image: var(--gradient-purple);
+    min-height: 100vh;
+    display: flex;
+}
+
+
+.container aside {
+    width: 280px;
+    padding: 30px;
+    background-image: var(--gradient-white);
+    color: rgb(59, 59, 59);
+    box-shadow: var(--main-shadow);
+}
+
+.user {
+    padding: 10px;
+    border-bottom:  1px solid rgba(134, 133, 133, 0.315);
+    display: flex;
+}
+
+.user-container {
+    margin-top: 10px;
+}
+
+.current-user {
+    color: rgb(148, 136, 25);
+    font-weight: 900;
+}
+
+.current-player {
+    color: rgb(161, 70, 161);
+}
+
+.main {
+    flex: 1;
+    display: grid;
+    padding: 30px;
+    grid-template-areas: 
+    'game-bord tip'
+    'chat guess'
+    ;
+    gap: 20px;
+}
+
+.snippet-box {
+    background-color: rgba(0, 0, 0, 0.349);
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    height: 280px;
+    max-width: 750px;
+    justify-self: center;
+    align-self: end;
+}
+
+.main .chat-container {
+    grid-area: chat;
+    height: 100%;
+}
+
+.guess-container {
+    grid-area: guess;
+    height: 100%;
+}
+
+.game-bord-container {
+    grid-area: game-bord;
+    height: 250px;
+}
+
+.tip-container {
+    grid-area: tip;
+    background-color: rgba(0, 0, 0, 0.123);
+    height: 100%;
+}
+
+.main .send-area {
+    align-self: end;
+    display: flex;
+    align-items: center;
+}
+
+.send-area input {
+    flex: 1;
+    margin-right: 15px;
+}
+
+.msgs-container {
+    display: grid;
+    align-content: start;
+    align-items: start;
+    overflow: auto;
+    height: 100%;
+
+    
+}
+
+.msgs-container .msg {
+    display: flex;
+    width: fit-content;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    
+}
+
+.msg span {
+    margin-left: 6px;
+}
+
+.msg-current-user {
+    justify-self: end;
+    background-color: var(--second-purple) !important;
+    margin-right: 10px !important;
+}
+
+
+
+.current-player-bord-container {
+    display: grid;
+    justify-content: center;
+    align-content: start;
+    margin-top: 100px;
+    width:100%;
+}
+
+.current-player-bord-container h1 {
+    font-size: 50px;
+}
+
+.current-player-bord-container input {
+    padding: 15px;
+}
+
+.results-container {
+    justify-self: center;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    max-width: 500px;
+}
+
+.current-player-bord-container .result {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    cursor: pointer;
+
+    transition: background-color ease-in-out .2s;
+    border-radius: 20px;
+}
+
+.result:hover {
+    background-color: rgba(0, 0, 0, 0.13);
+}
+
+.current-player-bord-container .result img {
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.lyrics-bord-container {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.lyrics-container {
+    
+}
+
+.verse {
+    font-size: 18px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: background-color ease-in-out .3s;
+    border-radius: 10px;
+    padding: 5px;
+    
+}
+
+.verse:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.song-code {
+    justify-self: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.26);
+    margin-top: 20px;
+}
+
+.song-code span {
+    font-weight: bold;
+}
+
+.next-btn {
+    position: fixed;
+    right: 30px;
+    top: 30px;
+    font-size: 20px;
+}
+
+.disable {
+    transition: .3s;
+    opacity: 40%;
+    cursor: default;
+}
+
+.next.able {
+    transition: .3s;
+    opacity: 100%;
+}
+
+.game-info-start {
+    display: flex;
+}
+
+.game-info-start .timer {
+    margin-left: auto;
+    font-size: 30px;
+}
+
+
+.main-song-code-container {
+    justify-self: center;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 30px;
+    text-align: center;
+}
+
+.main-song-code-container span {
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.tip {
+    color: gold;
+}
+
+
+.rigth {
+    color: green;
+}
+
+.close {
+    color: orange;
+}

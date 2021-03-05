@@ -1,0 +1,84 @@
+html,
+body {
+  
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/*vars*/
+:root {
+  --first-purple: rgb(58, 2, 131);
+  --second-purple: rgb(38, 0, 109);
+
+  --gradient-purple: linear-gradient(var(--first-purple), var(--second-purple));
+  --gradient-white: linear-gradient(white, rgb(201, 200, 200));
+  --main-shadow: 3px 3px 10px 5px black;
+}
+
+
+
+button {
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-1 {
+  padding: 8px;
+  border: none;
+  border-radius: 15px;
+  background-color: var(--first-purple);
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.btn-1 span {
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+
+.input-1 {
+  margin: 10px 0;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  outline: none;
+  box-shadow: inset 2px 3px 8px rgba(0, 0, 0, 0.651);
+
+  color: white;
+}
+
+.loading-icon {
+  width: 80px;
+  margin: 20px;
+}
+
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}

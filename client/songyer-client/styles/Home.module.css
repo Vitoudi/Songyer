@@ -1,0 +1,94 @@
+.container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  background-image: linear-gradient(rgb(58, 2, 131), rgb(38, 0, 109));
+}
+
+.initial-form-container {
+  padding: 20px;
+  display: grid;
+  justify-content: center;
+  align-content: start;
+}
+
+
+.header {
+  margin-top: 100px;
+}
+
+.header h1 {
+  color: white;
+  font-size: 4rem;
+  text-align: center;
+  text-shadow: 2px 2px 2px black;
+}
+
+.input-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container input {
+  margin: 10px 0;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  outline: none;
+  box-shadow: inset 2px 3px 8px rgba(0, 0, 0, 0.651);
+
+  color: white;
+}
+
+.input-container input::placeholder {
+  color: rgba(255, 255, 255, 0.582);
+}
+
+
+
+
+.room-selector-container {
+  padding: 30px;
+  background-image: linear-gradient(white, rgb(201, 200, 200));
+  box-shadow: 3px 3px 10px 5px black;
+}
+
+.room-selector-container {
+  
+}
+
+.initial {
+  display: flex;
+}
+
+.initial button {
+  margin-left: auto;
+}
+
+.rooms-container {
+  margin-top: 30px;
+  display: grid;
+  min-height: 50vh;
+  align-content: start;
+}
+
+.room {
+  cursor: pointer;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.198);
+  padding: 20px;
+  color: rgb(85, 85, 85);
+  display: flex;
+}
+
+.room span {
+  margin-left: auto;
+}
+
+.rooms-container h2 {
+  color: grey;
+  justify-self: center;
+  align-self: center;
+}
