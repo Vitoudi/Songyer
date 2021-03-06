@@ -30,6 +30,7 @@ export default function GuessContainer({roomId, room}) {
     function handleClick() {
         if(!socket || !room?.songCode || gotRigth || currentPlayer?.id === currentUser.id) return
         socket.emit('new_guess', {roomId, guess, user: currentUser})
+        setGuess('')
     }
 
     function checkForCorrectGuess(guessData) {

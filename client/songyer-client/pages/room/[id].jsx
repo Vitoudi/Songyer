@@ -10,7 +10,7 @@ import TipContainer from "../../components/RoomRelated/TipContainer";
 import UserInRoom from "../../components/RoomRelated/userInRoom";
 import { GlobalContext } from "../../context/GlobalContext";
 import styles from "../../styles/Room.module.css";
-import { updateMembers } from "./utils/updateMembers";
+import { updateMembers } from "../../utils/updateMembers";
 
 export default function RoomPage() {
   const { socket, currentUser } = useContext(GlobalContext)[0];

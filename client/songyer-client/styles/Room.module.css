@@ -68,7 +68,7 @@
 
 .game-bord-container {
     grid-area: game-bord;
-    height: 250px;
+    height: 200px;
 }
 
 .tip-container {

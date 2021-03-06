@@ -11,7 +11,7 @@ import Rodal from 'rodal'
 import io from 'socket.io-client'
 import { useContext } from 'react'
 import { GlobalContext } from '../context/GlobalContext'
-const socket = io.connect("http://localhost:8080");
+const socket = io.connect("https://songyer.herokuapp.com");
 
 export default function Home() {
   const [connected, setConnected] = useState(false)

@@ -27,6 +27,7 @@ export default function TipContainer({room, isFromCurrentPlayer}) {
     function handleClick() {
         if(!currentTipText) return
         socket.emit('new_tip', {roomId: room.id, text: currentTipText})
+        setCurrentTipText("");
     }
 
     return (

@@ -80,7 +80,7 @@ export default function RoomSelector({ username }) {
               );
             })
           ) : (
-            <h2>Sem salas abertas</h2>
+            <h2 style={{alignSelf: 'center'}}>Sem salas abertas</h2>
           )}
         </div>
       </div>
