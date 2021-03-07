@@ -17,8 +17,8 @@ export default function WarningModal({children, modalState, setModalState, setWa
           });
         }}
         visible={modalState.isOpen}
-        width={350}
         height={200}
+        className="modal"
       >
         <div className={styles["container"]}>
           <h2 style={{ color: "rgb(200, 0, 0)" }}>Atenção</h2>

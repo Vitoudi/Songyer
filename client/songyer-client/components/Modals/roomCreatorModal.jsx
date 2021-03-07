@@ -58,7 +58,7 @@ export default function RoomCreatorModal({modalState, setModalState, username}) 
           });
         }}
         visible={modalState.isOpen}
-        width={350}
+        className="modal"
       >
         <div className={styles["container"]}>
           <h2 className={styles["title"]}>Sua sala:</h2>
