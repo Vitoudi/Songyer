@@ -37,7 +37,7 @@ export default function TipContainer({room, isFromCurrentPlayer}) {
         <h2>Dicas:</h2>
         <div className={styles["msgs-container"]}>
           <ScrollableFeed forceScroll={true}>
-            {tips?.length > 0 &&
+            {tips?.length > 0 ?
               tips.map((tip) => {
                 return (
                   <p className={styles["tip"]}>
@@ -45,7 +45,9 @@ export default function TipContainer({room, isFromCurrentPlayer}) {
                     {tip.text}
                   </p>
                 );
-              })}
+              }) : (
+                <h2 style={{textAlign: 'center', color: 'rgba(255, 255, 255, .5)', marginTop: '8%', fontSize: '30px'}}>Ainda sem dicas</h2>
+              )}
           </ScrollableFeed>
         </div>
 
