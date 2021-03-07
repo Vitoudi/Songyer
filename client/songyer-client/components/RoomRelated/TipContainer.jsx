@@ -11,7 +11,7 @@ export default function TipContainer({room, isFromCurrentPlayer}) {
     const [tips, setTips] = useState([])
 
     useEffect(()=> {
-        if (!room || !room.records?.tips?.length) return;
+        if (!room) return;
         console.log('passed')
         let index = 0
         const tips = room.records.tips.map((tip) => {
