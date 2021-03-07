@@ -17,12 +17,17 @@ export default function WarningModal({children, modalState, setModalState, setWa
           });
         }}
         visible={modalState.isOpen}
+        width={350}
         height={200}
       >
         <div className={styles["container"]}>
-          <h2 style={{color: 'rgb(200, 0, 0)'}}>Atenção</h2>
-          <h3 style={{textAlign: 'center', alignSelf: 'start'}}>{children}</h3>
-          <button onClick={handleClick} className="btn-1">Ok</button>
+          <h2 style={{ color: "rgb(200, 0, 0)" }}>Atenção</h2>
+          <h3 style={{ textAlign: "center", alignSelf: "start" }}>
+            {children}
+          </h3>
+          <button onClick={handleClick} className="btn-1">
+            Ok
+          </button>
         </div>
       </Rodal>
     );

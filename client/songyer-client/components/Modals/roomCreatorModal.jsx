@@ -53,11 +53,12 @@ export default function RoomCreatorModal({modalState, setModalState, username}) 
     return (
       <Rodal
         onClose={() => {
-          setModalState(state => {
-            return {...state, isOpen: false}
-          })
+          setModalState((state) => {
+            return { ...state, isOpen: false };
+          });
         }}
         visible={modalState.isOpen}
+        width={350}
       >
         <div className={styles["container"]}>
           <h2 className={styles["title"]}>Sua sala:</h2>
@@ -65,8 +66,10 @@ export default function RoomCreatorModal({modalState, setModalState, username}) 
             <label>
               Nome:{" "}
               <input
-              value={roomName}
-              onChange={(e) => {setRoomName(e.target.value)}}
+                value={roomName}
+                onChange={(e) => {
+                  setRoomName(e.target.value);
+                }}
                 type="text"
                 placeholder="nome da sala. Ex: 'só Rock'"
                 className={styles["input"]}
@@ -85,7 +88,9 @@ export default function RoomCreatorModal({modalState, setModalState, username}) 
               </select>
             </label>
           </div>
-          <button onClick={handleClick} className="btn-1">criar sala</button>
+          <button onClick={handleClick} className="btn-1">
+            criar sala
+          </button>
         </div>
       </Rodal>
     );

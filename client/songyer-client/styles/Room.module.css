@@ -317,4 +317,33 @@
     height: 100%;
     z-index: 9999;
 }
+
+.current-player-bord-container h1 {
+    font-size: 28px;
+}
+
+.lyrics-bord-container {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+.lyrics-container {
+    
+}
+
+.next-btn.disable {
+    transition: .3s;
+    opacity: 100%;
+    cursor: default;
+    box-shadow: .5px .5px 10px  3px rgba(0, 0, 0, 0.39);
+    color: rgba(255, 255, 255, 0.431);
+}
+
+
+
+
 }

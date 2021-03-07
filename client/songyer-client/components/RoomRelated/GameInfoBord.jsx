@@ -6,63 +6,63 @@ import { GlobalContext } from '../../context/GlobalContext';
 import styles from "../../styles/Room.module.css";
 import menuIcon from "../../public/assets/menu-icon.png";
 
-export default function GameInfoBord({ currentPlayer, roomId, room, setMobileMenuOpen }) {
-    const {socket} = useContext(GlobalContext)[0]
-    const [currentSongCode, setCurrentSongCode] = useState('')
-    const [timerValueInSeconds, setTimerValueInSeconds] = useState(0)
-    const [timerString, setTimerString] = useState('')
+export default function GameInfoBord({ currentPlayer, room, setMobileMenuOpen }) {
+  const { socket } = useContext(GlobalContext)[0];
+  const [currentSongCode, setCurrentSongCode] = useState("");
+  const [timerValueInSeconds, setTimerValueInSeconds] = useState(0);
+  const [timerString, setTimerString] = useState("");
 
-    useEffect(()=> {
-        if(!socket) return
+  useEffect(() => {
+    if (!socket) return;
 
-        socket.on("song_code_arrived", (songCode) => {
-          //setCurrentSongCode(songCode)
-        });
+    socket.on("song_code_arrived", (songCode) => {
+      //setCurrentSongCode(songCode)
+    });
 
-        socket.on('timer_update', timerValue => {
-            if(timerValue === 0) setCurrentSongCode('')
-            setTimerValueInSeconds(timerValue)
-        })
+    socket.on("timer_update", (timerValue) => {
+      if (timerValue === 0) setCurrentSongCode("");
+      setTimerValueInSeconds(timerValue);
+    });
+  }, []);
 
-    }, [])
+  useEffect(() => {
+    console.log(room);
+    if (!room) return;
 
-    useEffect(() => {
-        console.log(room)
-        if(!room) return
+    setCurrentSongCode(room.songCode);
+  }, [room]);
 
-        setCurrentSongCode(room.songCode)
+  useEffect(() => {
+    const timerStringValue = formatTimeValue(timerValueInSeconds);
+    setTimerString(timerStringValue);
+  }, [timerValueInSeconds]);
 
-    }, [room])
-
-    useEffect(() => {
-        const timerStringValue = formatTimeValue(timerValueInSeconds)
-        setTimerString(timerStringValue)
-    }, [timerValueInSeconds])
-
-
-    function formatTimeValue(value) {
-        function secondsToMinutes(value) {
-            return value / 60
-        }
-
-        const rawMinutes = secondsToMinutes(value)
-        const minutes = Math.floor(rawMinutes).toString()
-        const seconds = (Math.ceil((rawMinutes - minutes) * 60)).toString()
-
-        const output = `${minutes} : ${seconds.padStart(2, '0')}`
-
-        return output
+  function formatTimeValue(value) {
+    function secondsToMinutes(value) {
+      return value / 60;
     }
+
+    const rawMinutes = secondsToMinutes(value);
+    const minutes = Math.floor(rawMinutes).toString();
+    const seconds = Math.ceil((rawMinutes - minutes) * 60).toString();
+
+    const output = `${minutes} : ${seconds.padStart(2, "0")}`;
+
+    return output;
+  }
 
   return (
     <div className={styles["game-bord-container"]}>
       <div className={styles["game-info-start"]}>
         <div>
-          <div style={{display: 'flex'}}>
+          <div style={{ display: "flex" }}>
             <img
-              onClick={() => setMobileMenuOpen(true)}
+              onClick={() => {
+                console.log(setMobileMenuOpen)
+                if(setMobileMenuOpen) setMobileMenuOpen(true);
+              }}
               className={styles["menu-icon"]}
-              style={{ width: "20px", marginRight: '10px' }}
+              style={{ width: "20px", marginRight: "10px" }}
               src={menuIcon}
               alt=""
             />

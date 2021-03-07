@@ -127,7 +127,10 @@ export default function RoomPage() {
           <GuessContainer room={thisRoom} roomId={"ROOM_" + ROOM_ID} />
         </main>
       ) : (
-        <CurrentPlayerBord room={thisRoom} />
+        <CurrentPlayerBord
+          room={thisRoom}
+          setMobileMenuOpen={setMobileMenuOpen}
+        />
       )}
     </div>
   );
