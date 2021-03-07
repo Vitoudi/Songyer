@@ -11,6 +11,7 @@ import UserInRoom from "../../components/RoomRelated/userInRoom";
 import { GlobalContext } from "../../context/GlobalContext";
 import styles from "../../styles/Room.module.css";
 import { updateMembers } from "../../utils/updateMembers";
+import menuIcon2 from "../../public/assets/menu-icon-2.png";
 
 export default function RoomPage() {
   const { socket, currentUser } = useContext(GlobalContext)[0];
@@ -20,6 +21,7 @@ export default function RoomPage() {
   const [currentPlayer, setCurrentPlayer] = useState(null);
   const [userIsTheCurrentPlayer, setUserIsTheCurrentPlayer] = useState(false);
   const [members, setMembers] = useState([]);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!socket) return;
@@ -94,12 +96,21 @@ export default function RoomPage() {
 
   return (
     <div className={styles["container"]}>
-      <aside>
+      <aside className={mobileMenuOpen ? styles["mobile-menu-open"] : ""}>
+        <img
+          onClick={() => setMobileMenuOpen(false)}
+          className={styles["menu-icon"]}
+          style={{ width: "20px", marginRight: "10px" }}
+          src={menuIcon2}
+          alt=""
+        />
         <h2>Participantes:</h2>
         <div className={styles["user-container"]}></div>
         {members.length > 0 && currentPlayer
           ? members.map((member) => {
-              return <UserInRoom options={{ member, currentPlayer, thisRoom }} />;
+              return (
+                <UserInRoom options={{ member, currentPlayer, thisRoom }} />
+              );
             })
           : ""}
       </aside>
@@ -109,6 +120,7 @@ export default function RoomPage() {
             room={thisRoom}
             currentPlayer={currentPlayer}
             roomId={"ROOM_" + ROOM_ID}
+            setMobileMenuOpen={setMobileMenuOpen}
           />
           <TipContainer room={thisRoom} />
           <Chat room={thisRoom} roomId={"ROOM_" + ROOM_ID} />

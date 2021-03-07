@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { GlobalContext } from '../../context/GlobalContext';
 import styles from "../../styles/Room.module.css";
 import ScrollableFeed from "react-scrollable-feed";
+import menuIcon from '../../public/assets/menu-icon.png'
 
 export default function TipContainer({room, isFromCurrentPlayer}) {
     const { socket, currentUser } = useContext(GlobalContext)[0];

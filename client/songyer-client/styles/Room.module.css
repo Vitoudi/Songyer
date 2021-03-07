@@ -81,6 +81,10 @@
     width: 100%;
 }
 
+.menu-icon {
+    display: none;
+} 
+
 .main .send-area {
     align-self: end;
     display: flex;
@@ -273,4 +277,44 @@
 
 .close {
     color: orange;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+    .main {
+    grid-template-areas: 
+    'game-bord'
+    'guess'
+    'tip'
+    'chat'
+    ;
+    grid-template-columns: 1fr;
+}
+
+.container aside {
+    width: 220px;
+    padding: 30px;
+    background-image: var(--gradient-white);
+    color: rgb(59, 59, 59);
+    box-shadow: var(--main-shadow);
+}
+}
+
+
+@media only screen and (max-width: 620px) {
+    .container aside {
+        display: none;
+}
+
+.menu-icon {
+    display: block;
+}
+
+.mobile-menu-open {
+    display: block !important;
+    position: fixed !important;
+    height: 100%;
+    z-index: 9999;
+}
 }

@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { GlobalContext } from '../../context/GlobalContext';
 import styles from "../../styles/Room.module.css";
+import menuIcon from "../../public/assets/menu-icon.png";
 
-export default function GameInfoBord({ currentPlayer, roomId, room }) {
+export default function GameInfoBord({ currentPlayer, roomId, room, setMobileMenuOpen }) {
     const {socket} = useContext(GlobalContext)[0]
     const [currentSongCode, setCurrentSongCode] = useState('')
     const [timerValueInSeconds, setTimerValueInSeconds] = useState(0)
@@ -57,7 +58,17 @@ export default function GameInfoBord({ currentPlayer, roomId, room }) {
     <div className={styles["game-bord-container"]}>
       <div className={styles["game-info-start"]}>
         <div>
-          <h3>Jogador atual:</h3>
+          <div style={{display: 'flex'}}>
+            <img
+              onClick={() => setMobileMenuOpen(true)}
+              className={styles["menu-icon"]}
+              style={{ width: "20px", marginRight: '10px' }}
+              src={menuIcon}
+              alt=""
+            />
+            <h3>Jogador atual:</h3>
+          </div>
+
           {currentPlayer && (
             <h2 style={{ color: "rgba(255, 255, 255, 0.9)" }}>
               {currentPlayer?.username || currentPlayer}
