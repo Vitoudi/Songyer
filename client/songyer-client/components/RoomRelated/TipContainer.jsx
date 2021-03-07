@@ -46,7 +46,7 @@ export default function TipContainer({room, isFromCurrentPlayer}) {
                   </p>
                 );
               }) : (
-                <h2 style={{textAlign: 'center', color: 'rgba(255, 255, 255, .5)', fontSize: '30px'}}>Ainda sem dicas</h2>
+                <h2 style={{textAlign: 'center', color: 'rgba(255, 255, 255, .5)', fontSize: '30px', marginBottom: '5%'}}>Ainda sem dicas</h2>
               )}
           </ScrollableFeed>
         </div>
