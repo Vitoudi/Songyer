@@ -31,9 +31,6 @@ export default function Home() {
         socket.on("user_connected", () => {
           console.log('connected');
 
-          /*setGlobalState(state => {
-            return { ...state, currentUser: { ...state.currentUser, id: user.id } };
-          })*/
           socket.emit("message", { text: "connected", time: Date.now() });
         });
       }

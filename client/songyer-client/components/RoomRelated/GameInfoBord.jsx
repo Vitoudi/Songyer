@@ -55,7 +55,7 @@ export default function GameInfoBord({ currentPlayer, roomId, room }) {
 
   return (
     <div className={styles["game-bord-container"]}>
-      <div className={styles['game-info-start']}>
+      <div className={styles["game-info-start"]}>
         <div>
           <h3>Jogador atual:</h3>
           {currentPlayer && (
@@ -64,16 +64,18 @@ export default function GameInfoBord({ currentPlayer, roomId, room }) {
             </h2>
           )}
         </div>
-        <h3 className={styles['timer']}>{timerString}</h3>
+        <h3 className={styles["timer"]}>{timerString}</h3>
       </div>
       {currentSongCode ? (
         <div className={styles["main-song-code-container"]}>
-          Código:
-          <span>{currentSongCode}</span>
+          <div>
+            <p>Código:</p>
+            <span>{currentSongCode}</span>
+          </div>
         </div>
       ) : (
         <div className={styles["main-song-code-container"]}>
-          Esperando jogador...
+          <div>Esperando jogador...</div>
         </div>
       )}
     </div>

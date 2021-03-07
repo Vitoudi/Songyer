@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { GlobalContext } from '../../context/GlobalContext';
 import styles from "../../styles/Room.module.css";
+import ScrollableFeed from "react-scrollable-feed";
 
 export default function TipContainer({room, isFromCurrentPlayer}) {
     const { socket, currentUser } = useContext(GlobalContext)[0];
@@ -10,13 +11,14 @@ export default function TipContainer({room, isFromCurrentPlayer}) {
     const [tips, setTips] = useState([])
 
     useEffect(()=> {
-        if(!room) return
+        if (!room || !room.records?.tips?.length) return;
+        console.log('passed')
         let index = 0
         const tips = room.records.tips.map((tip) => {
           index++;
           return { text: tip, index };
         });
-        setTips(tips)
+        setTips(tips || [])
     }, [room])
 
     useEffect(()=> {
@@ -34,15 +36,17 @@ export default function TipContainer({room, isFromCurrentPlayer}) {
       <div className={`${styles["tip-container"]} ${styles["snippet-box"]}`}>
         <h2>Dicas:</h2>
         <div className={styles["msgs-container"]}>
-          {tips?.length > 0 &&
-            tips.map((tip) => {
-              return (
-                <p className={styles["tip"]}>
-                  <strong>DICA {tip.index}: </strong>
-                  {tip.text}
-                </p>
-              );
-            })}
+          <ScrollableFeed forceScroll={true}>
+            {tips?.length > 0 &&
+              tips.map((tip) => {
+                return (
+                  <p className={styles["tip"]}>
+                    <strong>DICA {tip.index}: </strong>
+                    {tip.text}
+                  </p>
+                );
+              })}
+          </ScrollableFeed>
         </div>
 
         {isFromCurrentPlayer && (

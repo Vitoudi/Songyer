@@ -11,6 +11,7 @@ class Room {
       guesses: [],
       tips: [],
     };
+    this.numberOfPlayersThatGotRigth = 0
   }
 }
 
@@ -36,6 +37,14 @@ class RoomManager {
     return newRoom;
   }
 
+  removeRoom(roomId) {
+    const filteredRooms = this.rooms.filter((room) => {
+      return room.id !== roomId;
+    });
+
+    this.rooms = filteredRooms;
+  }
+
   addToRoom(roomId, user) {
     let room = this.getRoom(roomId);
     if (room) room.members.push(user);
@@ -49,7 +58,7 @@ class RoomManager {
     });
 
     room.members = update;
-    this.updateRoom(roomId, room);
+    //this.updateRoom(roomId, update);
   }
 
   getRoom(id) {
@@ -67,7 +76,6 @@ class RoomManager {
 
   updateRoom(roomId, updatedVersion) {
     if (!this.rooms.length) return;
-    //console.log(this.rooms)
     const roomsIds = this.rooms.map((room) => room.id);
     const roomIndex = roomsIds.indexOf(roomId);
     this.rooms[roomIndex] = updatedVersion;
@@ -77,14 +85,15 @@ class RoomManager {
     const room = this.getRoom(roomId);
     const members = room.members;
 
-    const member = members.filter(member => member.id === memberId)[0];
+    const member = members.filter((member) => member.id === memberId)[0];
     return member;
   }
 }
 
 class RoomHandler {
-  constructor({ socket, io }, roomManager) {
+  constructor({ socket, io }, roomManager, gameManager) {
     this.roomManager = roomManager;
+    this.gameManager = gameManager
     this.socket = socket;
     this.io = io;
   }
@@ -95,7 +104,6 @@ class RoomHandler {
   }
 
   handleRoomEnter({ roomId, user }) {
-    //console.log(roomId, user)
 
     const roomsId = this.roomManager.rooms.map((room) => room.id);
     this.roomManager.addToRoom(roomId, user);
@@ -110,15 +118,21 @@ class RoomHandler {
     });
 
     function handleDiconnect() {
+      const room = this.roomManager.getRoom(roomId);
+      const game = this.gameManager.getGame(roomId)
       this.roomManager.removeFromRoom(roomId, user.id);
       this.io.of("/").in(roomId).emit("user_leave_room", user);
+
+      if (room?.members.length === 0) {
+        this.roomManager.removeRoom(roomId);
+        this.gameManager.removeGame(roomId)
+      }
     }
   }
 
   handleUserIsInRoom(roomId) {
     const room = this.roomManager.getRoom(roomId);
     if (room?.members?.length >= 1 && !room?.gameIsHappaning) {
-      //console.log('user_is_in_room was called')
       this.roomManager.updateRoom(roomId, {
         ...room,
         gameIsHappaning: true,

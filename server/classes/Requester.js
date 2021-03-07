@@ -1,7 +1,4 @@
-const API_SECRET = "";
-
-const { getLyrics, getSong, searchSong, getSongById } = require("genius-lyrics-api");
-const fetch = require("node-fetch");
+const { getSong, searchSong } = require("genius-lyrics-api");
 
 class Requester {
   constructor() {
@@ -13,7 +10,6 @@ class Requester {
     const formatedSong = song.title.split('by')
     const title = formatedSong[0]
     const artist = formatedSong[formatedSong.length - 1].replace(/\([^()]*\)/, '');
-    console.log(formatedSong)
 
     return getSong({
       apiKey: this.secret,
@@ -50,7 +46,6 @@ class RequestHandler {
   async handleGetSong(song) {
       try {
         const result = await this.requester.getSong(song);
-        console.group(result);
         this.socket.emit("song_data_arrived", result);
       } catch(err) {
           console.log(err)

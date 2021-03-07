@@ -42,6 +42,7 @@
     'chat guess'
     ;
     gap: 20px;
+    grid-template-columns: 1fr 1fr;
 }
 
 .snippet-box {
@@ -50,31 +51,34 @@
     width: 100%;
     padding: 20px;
     display: grid;
-    height: 280px;
-    max-width: 750px;
     justify-self: center;
+    
     align-self: end;
 }
 
 .main .chat-container {
     grid-area: chat;
     height: 100%;
+    height: 42vh;
 }
 
 .guess-container {
     grid-area: guess;
     height: 100%;
+    height: 42vh;
 }
 
 .game-bord-container {
     grid-area: game-bord;
-    height: 200px;
+    height: 43vh;
 }
 
 .tip-container {
     grid-area: tip;
     background-color: rgba(0, 0, 0, 0.123);
-    height: 100%;
+    overflow: auto;
+    height: 45vh;
+    width: 100%;
 }
 
 .main .send-area {
@@ -89,13 +93,18 @@
 }
 
 .msgs-container {
+    align-self: start;
     display: grid;
     align-content: start;
     align-items: start;
     overflow: auto;
     height: 100%;
+    width: 100%;
+}
 
-    
+.msgs-container div {
+    display: grid;
+    align-content: start;
 }
 
 .msgs-container .msg {
@@ -105,6 +114,7 @@
     margin: 10px 0;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.3);
+    max-width: 40%;
     
 }
 
@@ -238,18 +248,22 @@
     display: grid;
     justify-content: center;
     align-content: center;
-    align-items: center;
     font-size: 30px;
     text-align: center;
+
+}
+.main-song-code-container div {
+   margin-bottom: 60px;
 }
 
 .main-song-code-container span {
     font-weight: bold;
-    font-size: 50px;
+    font-size: 3rem;
 }
 
 .tip {
     color: gold;
+    margin-bottom: 5px;
 }
 
 

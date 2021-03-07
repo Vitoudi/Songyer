@@ -57,24 +57,24 @@ export default function Chat({roomId, room}) {
       <div className={`${styles["chat-container"]} ${styles["snippet-box"]}`}>
         <h2>Chat:</h2>
         <div className={styles["msgs-container"]}>
-          <ScrollableFeed>
             <div ref={inputRef} className={styles["msgs-container"]}>
-              {msgs.length > 0 &&
-                msgs.map((msg) => {
-                  const isCurrentUser = msg.user.id === currentUser.id;
-                  return (
-                    <div
-                      className={`${styles["msg"]} ${
-                        isCurrentUser ? styles["msg-current-user"] : ""
-                      }`}
-                    >
-                      {!isCurrentUser && <h4>{msg.user.username}: </h4>}
-                      <span>{msg.msgText}</span>
-                    </div>
-                  );
-                })}
+              <ScrollableFeed forceScroll={true}>
+                {msgs.length > 0 &&
+                  msgs.map((msg) => {
+                    const isCurrentUser = msg.user.id === currentUser.id;
+                    return (
+                      <div
+                        className={`${styles["msg"]} ${
+                          isCurrentUser ? styles["msg-current-user"] : ""
+                        }`}
+                      >
+                        {!isCurrentUser && <span>{msg.user.username}: </span>}
+                        <p style={{marginLeft: '10px'}}>{msg.msgText}</p>
+                      </div>
+                    );
+                  })}
+              </ScrollableFeed>
             </div>
-          </ScrollableFeed>
         </div>
         <div
           className={`${styles["send-area"]} ${
